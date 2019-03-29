@@ -1,0 +1,9 @@
+name: crystalgraph
+version: 0.1.1
+
+authors:
+  - Ayman Karim <akarim1@terpmail.umd.edu>
+
+crystal: 0.27.2
+
+license: MIT
