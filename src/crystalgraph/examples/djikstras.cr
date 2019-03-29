@@ -1,7 +1,9 @@
-require "../adjacencyMatrixGraph"
+require "../../crystalgraph"
+
+alias Graph = CrystalGraph::AdjacencyMatrixGraph
 
 size = 9
-graph = CrystalGraph::AdjacencyMatrixGraph.new(size, true, true)
+graph = Graph.new(size, true, true)
 
 graph[{0,1}] = 4
 graph[{0,7}] = 8
@@ -18,7 +20,10 @@ graph[{6,7}] = 1
 graph[{6,8}] = 6
 graph[{7,8}] = 7
 
-def djikstra(graph : CrystalGraph::AdjacencyMatrixGraph, src : Int32, nodes : Enumerable(Int32)): Array(Int64)
+distances = djikstra(graph, 0, (0..8))
+puts distances.inspect
+
+def djikstra(graph : Graph, src : Int32, nodes : Enumerable(Int32)): Array(Int64)
     nodeCount = nodes.size
     
     # Set distances to all nodes as infinity
@@ -50,6 +55,3 @@ def djikstra(graph : CrystalGraph::AdjacencyMatrixGraph, src : Int32, nodes : En
     
     return dist
 end
-
-distances = djikstra(graph, 0, (0..8))
-puts distances.inspect
